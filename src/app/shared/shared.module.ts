@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { StarComponent } from './star.component';
+import { StarComponent } from './components/star/star.component';
 
 @NgModule({
   declarations: [

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { ConvertToSpacesPipe } from '../shared/convert-to-spaces.pipe';
+import { ConvertToSpacesPipe } from './pipes/convert-to-spaces.pipe';
 import { SharedModule } from '../shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -20,5 +20,5 @@ import { ProductsRoutingModule } from './products-routing.module';
     SharedModule
   ]
 })
-export class ProductModule {
+export class ProductsModule {
 }
