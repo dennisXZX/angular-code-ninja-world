@@ -1,0 +1,73 @@
+<div class='card'>
+  <!-- header -->
+  <div class='card-header'>
+    {{pageTitle}}
+  </div>
+
+  <div class='card-body'>
+    <!-- filter keyword input -->
+    <div class='row'>
+      <div class='col-md-2'>Filter by:</div>
+      <div class='col-md-4'>
+        <input type='text'
+               [(ngModel)]='listFilter'
+        />
+      </div>
+    </div>
+
+    <!-- filter conditions displayed -->
+    <div class='row mt-3'
+         *ngIf='listFilter'>
+      <div class='col-md-6'>
+        <h4>
+          Filtered by
+          <span class="filter-word">{{listFilter}}</span>
+          has {{filterProductsCount}}
+          {{ filterProductsCount > 1 ? 'results' : 'result' }}
+        </h4>
+      </div>
+    </div>
+
+    <!-- product table -->
+    <div class='table-responsive'>
+      <table class='table'
+             *ngIf='products && products.length'>
+        <!-- product table header -->
+        <thead>
+        <tr>
+          <th>Product</th>
+          <th>Code</th>
+          <th>Available</th>
+          <th>Price</th>
+          <th>5 Star Rating</th>
+        </tr>
+        </thead>
+
+        <!-- product table body -->
+        <tbody>
+        <tr *ngFor='let product of filteredProducts'>
+          <td>
+            <a [routerLink]="['/products', product.productId]">
+              {{ product.productName }}
+            </a>
+          </td>
+          <td>{{ product.productCode | lowercase | convertToSpaces: '-' }}</td>
+          <td>{{ product.releaseDate }}</td>
+          <td>{{ product.price | currency:'USD':'symbol':'1.2-2' }}</td>
+          <td>
+            <pm-star
+              [rating]='product.starRating'>
+            </pm-star>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<div *ngIf='errorMessage'
+     class='alert alert-danger'>
+  Error: {{ errorMessage }}
+</div>
