@@ -14,7 +14,6 @@ export class ProductDetailGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    console.log('next', next);
     const id = parseInt(next.url[1].path, 10);
 
     // return to product list page if the id is not a valid number or less than 0

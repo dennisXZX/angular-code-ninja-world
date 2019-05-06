@@ -1,25 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
-import { WelcomeComponent } from './home/welcome.component';
+import { AppRoutingModule } from './app-routing.module';
 import { ProductModule } from './products/product.module';
+import { AppComponent } from './app.component';
 
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    WelcomeComponent
+    AppRoutingModule.components
   ],
   imports: [
     BrowserModule,
     ProductModule,
-    RouterModule.forRoot([
-      { path: 'welcome', component: WelcomeComponent },
-      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
-      { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
-    ])
+    AppRoutingModule
   ]
 })
 export class AppModule { }
